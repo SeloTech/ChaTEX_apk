@@ -33,22 +33,22 @@
     const main = mk(`
       <div class="tg-profile" data-go="@profile"><div class="tg-pav" id="tg-pav"></div><div class="tg-pname" id="tg-pname">…</div><div class="tg-puser" id="tg-puser"></div></div>
       <div class="tg-group">
-        ${row('@profile', '👤', '#3d8bff', 'Мой аккаунт')}
-        ${row('notif', '🔔', '#ff5a5a', 'Уведомления и звуки')}
-        ${row('privacy', '🔒', '#34c759', 'Конфиденциальность')}
-        ${row('devices', '📱', '#0a84ff', 'Устройства')}
-        ${row('us', '👥', '#ff2d55', 'О нас')}
-        ${row('storage', '💾', '#ff9f0a', 'Данные и хранилище')}
-        ${row('look', '🎨', '#af52de', 'Внешний вид')}
-        ${row('lang', '🌐', '#32ade6', 'Язык', 'id="tg-lang-val" data-no-i18n')}
+        ${row('@profile', '<i class="ic ic-profile"></i>', '#3d8bff', 'Мой аккаунт')}
+        ${row('notif', '<i class="ic ic-notifications"></i>', '#ff5a5a', 'Уведомления и звуки')}
+        ${row('privacy', '<i class="ic ic-lock"></i>', '#34c759', 'Конфиденциальность')}
+        ${row('devices', '<i class="ic ic-layers"></i>', '#0a84ff', 'Устройства')}
+        ${row('us', '<i class="ic ic-group"></i>', '#ff2d55', 'О нас')}
+        ${row('storage', '<i class="ic ic-database"></i>', '#ff9f0a', 'Данные и хранилище')}
+        ${row('look', '<i class="ic ic-appearance"></i>', '#af52de', 'Внешний вид')}
+        ${row('lang', '<i class="ic ic-language"></i>', '#32ade6', 'Язык', 'id="tg-lang-val" data-no-i18n')}
       </div>
       <div class="tg-group">
         ${row('premium', '✦', 'linear-gradient(135deg,#ffb800,#ff6a00)', 'ChaTEX Premium')}
-        ${row('@help', '❓', '#5e5ce6', 'Помощь')}
-        ${row('about', 'ℹ️', '#8e8e93', 'О приложении')}
+        ${row('@help', '<i class="ic ic-chat"></i>', '#5e5ce6', 'Помощь')}
+        ${row('about', '<i class="ic ic-info"></i>', '#8e8e93', 'О приложении')}
       </div>
       <div class="tg-group tg-logout"></div>
-      <div class="tg-group">${row('terms', '📄', '#8e8e93', 'Пользовательское соглашение')}</div>`, 'tg-main');
+      <div class="tg-group">${row('terms', '<i class="ic ic-document"></i>', '#8e8e93', 'Пользовательское соглашение')}</div>`, 'tg-main');
     $('.tg-logout', main).appendChild(logout);
     page('main', main);
 
@@ -72,7 +72,7 @@
 
     // О приложении
     const about = mk(`<div class="tg-about"><div class="tg-logo">ChaTEX</div><div class="tg-ver" data-no-i18n>v${esc(typeof APP_VERSION !== 'undefined' ? APP_VERSION : '')}</div></div>
-      <div class="tg-group"><div class="tg-row" data-go="@help"><span class="tg-ic" style="background:#5e5ce6">🛡️</span><span class="tg-lbl">Поддержка и жалобы</span><span class="tg-chev">›</span></div></div>`, 'tg-aboutpage');
+      <div class="tg-group"><div class="tg-row" data-go="@help"><span class="tg-ic" style="background:#5e5ce6"><i class="ic ic-security"></i></span><span class="tg-lbl">Поддержка и жалобы</span><span class="tg-chev">›</span></div></div>`, 'tg-aboutpage');
     page('about', about);
 
     box.textContent = '';

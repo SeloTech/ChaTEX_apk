@@ -186,7 +186,7 @@
       <div class="tx-sv-head">
         <div class="tx-sv-who" id="tx-sv-who"></div>
         <div class="tx-sv-time" id="tx-sv-time"></div>
-        <button class="tx-sv-del" id="tx-sv-del" title="Удалить" style="display:none">🗑</button>
+        <button class="tx-sv-del" id="tx-sv-del" title="Удалить" style="display:none"><i class="ic ic-delete"></i></button>
         <button class="tx-sv-x" id="tx-sv-x" aria-label="Закрыть">✕</button>
       </div>
       <div class="tx-sv-img"><img id="tx-sv-img" alt=""></div>

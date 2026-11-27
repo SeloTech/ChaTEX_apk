@@ -881,14 +881,14 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
     </div>
     <div class="search-box">
       <div class="search-wrap">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon"><i class="ic ic-search"></i></span>
         <input class="search-input" id="search-input" placeholder="Поиск..." oninput="searchUsers(this.value)" onblur="hideSearch()">
         <div class="search-results" id="search-results"></div>
       </div>
     </div>
     <div class="chats-list" id="chats-list">
       <div class="chat-item active" id="official-chat-item" onclick="openOfficial()">
-        <div class="avatar official" style="font-size:18px">📢</div>
+        <div class="avatar official"><i class="ic ic-broadcast"></i></div>
         <div class="chat-item-info">
           <div class="chat-item-name">ChaTEX Official
             <span class="badge-official"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
@@ -897,7 +897,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
         </div>
       </div>
       <div class="chat-item" id="support-chat-item" onclick="openSupport()">
-        <div class="avatar support" style="font-size:18px">🛡️</div>
+        <div class="avatar support"><i class="ic ic-security"></i></div>
         <div class="chat-item-info">
           <div class="chat-item-name">ChaTEX! Support
             <span class="badge-official" style="background:var(--red)"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
@@ -913,7 +913,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
         </div>
       </div>
       <div class="chat-item folder-header" id="tickets-folder-header" onclick="openTicketsHome()">
-        <div class="avatar" style="font-size:18px;background:rgba(255,61,107,.15);color:var(--red)">⚠️</div>
+        <div class="avatar" style="background:rgba(255,61,107,.15);color:var(--red)"><i class="ic ic-warning"></i></div>
         <div class="chat-item-info">
           <div class="chat-item-name">Жалобы <span class="folder-count" id="tickets-count" style="display:none">0</span></div>
           <div class="chat-item-preview" id="tickets-folder-sub">Мои обращения</div>
@@ -930,7 +930,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
       </div>
       <div style="display:flex;gap:6px">
         <div class="h-btn" onclick="openNotifications()" id="notif-btn">🔔</div>
-        <div class="h-btn" onclick="openSettings()">⚙️</div>
+        <div class="h-btn" onclick="openSettings()"><i class="ic ic-settings"></i></div>
         <div class="h-btn" id="admin-btn" onclick="openAdminPanel()" style="display:none">👑</div>
       </div>
     </div>
@@ -940,7 +940,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
   <div class="chat-area" id="chat-area">
     <div class="chat-header">
       <div class="back-btn" onclick="goBack()">‹</div>
-      <div class="avatar official" style="font-size:18px" id="chat-header-avatar">📢</div>
+      <div class="avatar official" id="chat-header-avatar"><i class="ic ic-broadcast"></i></div>
       <div class="chat-header-info">
         <div class="chat-header-name" id="chat-header-name">ChaTEX Official</div>
         <div class="chat-header-sub" id="chat-header-sub">Официальный канал</div>
@@ -948,7 +948,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
       <div class="header-actions" id="header-actions"></div>
     </div>
     <div class="pinned-bar" id="pinned-bar" onclick="scrollToPinned()">
-      <span class="pinned-icon">📌</span>
+      <span class="pinned-icon"><i class="ic ic-pin"></i></span>
       <div class="pinned-text"><strong>Закреплено <span id="pinned-count"></span></strong><span id="pinned-preview">...</span></div>
       <span class="pinned-next" id="pinned-next" title="Следующее закреплённое" onclick="event.stopPropagation();nextPinned()" style="display:none">⌄</span>
       <span class="pinned-list-btn" id="pinned-list-btn" title="Все закреплённые" onclick="event.stopPropagation();openPinnedList()" style="display:none">☰</span>
@@ -986,7 +986,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 <!-- Official Compose -->
 <div class="modal-overlay" id="official-modal">
   <div class="modal">
-    <h3>📢 Официальное сообщение</h3>
+    <h3><i class="ic ic-broadcast"></i> Официальное сообщение</h3>
     <textarea id="official-text" placeholder="Напишите официальное объявление..."></textarea>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('official-modal')">Отмена</button>
@@ -998,7 +998,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 <!-- Complaint -->
 <div class="modal-overlay" id="complaint-modal">
   <div class="modal">
-    <h3>⚠️ Пожаловаться</h3>
+    <h3><i class="ic ic-warning"></i> Пожаловаться</h3>
     <div class="form-group">
       <label>Тема</label>
       <select id="complaint-type" style="width:100%;padding:11px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font);font-size:14px;outline:none">
@@ -1089,12 +1089,12 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 <!-- Channel Settings -->
 <div class="modal-overlay" id="channel-settings-modal">
   <div class="modal ch-modal">
-    <h3>⚙️ Настройки канала</h3>
+    <h3><i class="ic ic-settings"></i> Настройки канала</h3>
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
       <div id="ch-av-preview" onclick="document.getElementById('ch-av-file').click()" style="width:64px;height:64px;border-radius:50%;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:26px;border:2px solid var(--border);cursor:pointer;overflow:hidden;flex-shrink:0"></div>
       <div style="flex:1">
         <div class="avatar-src-tabs">
-          <div class="avatar-src-tab active" id="ch-avt-file" onclick="selectChAvt('file')">📁 Файл</div>
+          <div class="avatar-src-tab active" id="ch-avt-file" onclick="selectChAvt('file')"><i class="ic ic-folder"></i> Файл</div>
           <div class="avatar-src-tab" id="ch-avt-url" onclick="selectChAvt('url')">🔗 URL</div>
         </div>
         <input type="file" id="ch-av-file" accept="image/*" style="display:none" onchange="uploadChAvatar(this)">
@@ -1116,8 +1116,8 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
     </div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('channel-settings-modal')">Отмена</button>
-      <button class="btn-danger" onclick="deleteChannelAsSelf()">🗑 Удалить канал</button>
-      <button class="btn-primary" onclick="saveChannelSettings()">💾 Сохранить</button>
+      <button class="btn-danger" onclick="deleteChannelAsSelf()"><i class="ic ic-delete"></i> Удалить канал</button>
+      <button class="btn-primary" onclick="saveChannelSettings()"><i class="ic ic-download"></i> Сохранить</button>
     </div>
   </div>
 </div>
@@ -1125,12 +1125,12 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 <!-- Group Settings -->
 <div class="modal-overlay" id="group-settings-modal">
   <div class="modal ch-modal">
-    <h3>⚙️ Настройки группы</h3>
+    <h3><i class="ic ic-settings"></i> Настройки группы</h3>
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
       <div id="gr-av-preview" onclick="document.getElementById('gr-av-file').click()" style="width:64px;height:64px;border-radius:50%;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:26px;border:2px solid var(--border);cursor:pointer;overflow:hidden;flex-shrink:0"></div>
       <div style="flex:1">
         <div class="avatar-src-tabs">
-          <div class="avatar-src-tab active" id="gr-avt-file" onclick="selectGrAvt('file')">📁 Файл</div>
+          <div class="avatar-src-tab active" id="gr-avt-file" onclick="selectGrAvt('file')"><i class="ic ic-folder"></i> Файл</div>
           <div class="avatar-src-tab" id="gr-avt-url" onclick="selectGrAvt('url')">🔗 URL</div>
         </div>
         <input type="file" id="gr-av-file" accept="image/*" style="display:none" onchange="uploadGrAvatar(this)">
@@ -1156,8 +1156,8 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
     </div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('group-settings-modal')">Отмена</button>
-      <button class="btn-danger" onclick="deleteGroupAsSelf()">🗑 Удалить группу</button>
-      <button class="btn-primary" onclick="saveGroupSettings()">💾 Сохранить</button>
+      <button class="btn-danger" onclick="deleteGroupAsSelf()"><i class="ic ic-delete"></i> Удалить группу</button>
+      <button class="btn-primary" onclick="saveGroupSettings()"><i class="ic ic-download"></i> Сохранить</button>
     </div>
   </div>
 </div>
@@ -1165,7 +1165,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 <!-- Member Permissions (group/channel) -->
 <div class="modal-overlay" id="member-perms-modal">
   <div class="modal">
-    <h3>⚙️ Права участника <span id="mp-username" style="color:var(--text2);font-weight:400"></span></h3>
+    <h3><i class="ic ic-settings"></i> Права участника <span id="mp-username" style="color:var(--text2);font-weight:400"></span></h3>
     <div class="settings-row">
       <div class="settings-row-info"><div class="settings-row-label">Писать сообщения</div><div class="settings-row-desc">Может отправлять сообщения в чат</div></div>
       <div class="toggle on" id="mp-write" onclick="this.classList.toggle('on')"></div>
@@ -1184,7 +1184,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
     </div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('member-perms-modal')">Отмена</button>
-      <button class="btn-primary" onclick="saveMemberPerms()">💾 Сохранить</button>
+      <button class="btn-primary" onclick="saveMemberPerms()"><i class="ic ic-download"></i> Сохранить</button>
     </div>
   </div>
 </div>
@@ -1219,7 +1219,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
     <input type="file" id="profile-av-file" accept="image/*" style="display:none" onchange="uploadMyAvatar(this)">
     <div style="margin-bottom:12px">
       <div class="avatar-src-tabs" style="max-width:280px;margin:0 auto">
-        <div class="avatar-src-tab active" id="my-avt-file" onclick="selectMyAvt('file')">📁 Файл</div>
+        <div class="avatar-src-tab active" id="my-avt-file" onclick="selectMyAvt('file')"><i class="ic ic-folder"></i> Файл</div>
         <div class="avatar-src-tab" id="my-avt-url" onclick="selectMyAvt('url')">🔗 URL</div>
         <div class="avatar-src-tab" id="my-avt-cloud" onclick="selectMyAvt('cloud')">☁️ Облако</div>
       </div>
@@ -1256,7 +1256,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
         <input type="date" id="profile-birthday-inp" class="mini-input" style="margin:0">
       </div>
     </div>
-    <button class="profile-edit-btn" onclick="saveProfile()">💾 Сохранить профиль</button>
+    <button class="profile-edit-btn" onclick="saveProfile()"><i class="ic ic-download"></i> Сохранить профиль</button>
     <button class="logout-btn" onclick="doLogout()">Выйти из аккаунта</button>
   </div>
 </div>
@@ -1264,7 +1264,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 <!-- Settings -->
 <div class="modal-overlay" id="settings-modal">
   <div class="modal settings-modal">
-    <h3>⚙️ Настройки</h3>
+    <h3><i class="ic ic-settings"></i> Настройки</h3>
     <div class="settings-section">
       <h4>☁️ Хранилище медиа</h4>
       <div style="background:rgba(61,139,255,.08);border:1px solid rgba(61,139,255,.2);border-radius:12px;padding:12px;margin-bottom:12px;font-size:12px;color:var(--text2);line-height:1.7">
@@ -1317,12 +1317,12 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
         <div class="theme-card active" onclick="changeTheme('dark')" data-theme="dark"><div class="theme-card-preview dark"></div><div class="theme-card-name">Тёмная</div></div>
         <div class="theme-card" onclick="changeTheme('darker')" data-theme="darker"><div class="theme-card-preview darker"></div><div class="theme-card-name">Глубокая</div></div>
         <div class="theme-card" onclick="changeTheme('blue')" data-theme="blue"><div class="theme-card-preview blue"></div><div class="theme-card-name">Синяя</div></div>
-        <div class="theme-card premium-locked" onclick="changeTheme('aero')" data-theme="aero"><div class="theme-card-preview aero"></div><div class="theme-card-name">Aero Glass <span class="premium-pill">✦</span></div></div>
-        <div class="theme-card premium-locked" onclick="changeTheme('neon')" data-theme="neon"><div class="theme-card-preview neon"></div><div class="theme-card-name">Неон <span class="premium-pill">✦</span></div></div>
-        <div class="theme-card premium-locked" onclick="changeTheme('ocean')" data-theme="ocean"><div class="theme-card-preview ocean"></div><div class="theme-card-name">Океан <span class="premium-pill">✦</span></div></div>
-        <div class="theme-card premium-locked" onclick="changeTheme('sunset')" data-theme="sunset"><div class="theme-card-preview sunset"></div><div class="theme-card-name">Закат <span class="premium-pill">✦</span></div></div>
-        <div class="theme-card premium-locked" onclick="changeTheme('lavender')" data-theme="lavender"><div class="theme-card-preview lavender"></div><div class="theme-card-name">Лаванда <span class="premium-pill">✦</span></div></div>
-        <div class="theme-card premium-locked" onclick="changeTheme('forest')" data-theme="forest"><div class="theme-card-preview forest"></div><div class="theme-card-name">Лес <span class="premium-pill">✦</span></div></div>
+        <div class="theme-card premium-locked" onclick="changeTheme('aero')" data-theme="aero"><div class="theme-card-preview aero"></div><div class="theme-card-name">Aero Glass <span class="premium-pill"><i class="ic ic-diamond"></i></span></div></div>
+        <div class="theme-card premium-locked" onclick="changeTheme('neon')" data-theme="neon"><div class="theme-card-preview neon"></div><div class="theme-card-name">Неон <span class="premium-pill"><i class="ic ic-diamond"></i></span></div></div>
+        <div class="theme-card premium-locked" onclick="changeTheme('ocean')" data-theme="ocean"><div class="theme-card-preview ocean"></div><div class="theme-card-name">Океан <span class="premium-pill"><i class="ic ic-diamond"></i></span></div></div>
+        <div class="theme-card premium-locked" onclick="changeTheme('sunset')" data-theme="sunset"><div class="theme-card-preview sunset"></div><div class="theme-card-name">Закат <span class="premium-pill"><i class="ic ic-diamond"></i></span></div></div>
+        <div class="theme-card premium-locked" onclick="changeTheme('lavender')" data-theme="lavender"><div class="theme-card-preview lavender"></div><div class="theme-card-name">Лаванда <span class="premium-pill"><i class="ic ic-diamond"></i></span></div></div>
+        <div class="theme-card premium-locked" onclick="changeTheme('forest')" data-theme="forest"><div class="theme-card-preview forest"></div><div class="theme-card-name">Лес <span class="premium-pill"><i class="ic ic-diamond"></i></span></div></div>
       </div>
       <div class="settings-row" style="margin-top:12px"><div class="settings-row-info"><div class="settings-row-label">Размер шрифта</div></div>
         <select class="select-input" id="font-size-select" onchange="changeFontSize(this.value)"><option value="13">Маленький</option><option value="14" selected>Нормальный</option><option value="16">Большой</option></select>
@@ -1357,7 +1357,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
       <h4>🚀 Обновление приложения</h4>
       <p style="font-size:12px;color:var(--text2);margin:0 0 8px">Разошлёт всем открытым вкладкам баннер "Доступно обновление" без перезагрузки страницы у вас.</p>
       <input type="text" id="admin-update-version" class="mini-input" placeholder="Версия/заметка (необязательно)">
-      <button class="ua-btn verify" style="width:100%;margin-top:8px" onclick="triggerAppUpdate(document.getElementById('admin-update-version').value)">📢 Разослать обновление</button>
+      <button class="ua-btn verify" style="width:100%;margin-top:8px" onclick="triggerAppUpdate(document.getElementById('admin-update-version').value)"><i class="ic ic-broadcast"></i> Разослать обновление</button>
     </div>
     <div class="admin-section">
       <h4>📊 Статистика <span style="font-size:10px;color:var(--text3);font-weight:400">· обновляется в реальном времени</span></h4>
@@ -1379,7 +1379,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
       <div id="admin-chans-list"></div>
     </div>
     <div class="admin-section">
-      <h4>⚠️ Жалобы <button class="ua-btn verify" style="margin-left:8px" onclick="loadComplaints()">↻</button></h4>
+      <h4><i class="ic ic-warning"></i> Жалобы <button class="ua-btn verify" style="margin-left:8px" onclick="loadComplaints()">↻</button></h4>
       <div id="admin-complaints-list"><div style="color:var(--text3);font-size:13px">Загрузка...</div></div>
     </div>
     <div class="admin-section" id="admin-verify-section" style="display:none">
@@ -1391,7 +1391,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
       </div>
     </div>
     <div class="admin-section">
-      <h4>📢 Системное сообщение</h4>
+      <h4><i class="ic ic-broadcast"></i> Системное сообщение</h4>
       <textarea id="sys-msg-text" placeholder="Отправить сообщение в Support всем пользователям..." style="width:100%;height:70px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font);font-size:13px;padding:10px;outline:none;resize:none;margin-bottom:8px"></textarea>
       <button class="btn-primary" onclick="sendSysMessage()">Отправить всем</button>
     </div>
@@ -1453,7 +1453,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
     <div class="form-group">
       <label>Аватар</label>
       <div style="display:flex;gap:6px;margin-bottom:6px">
-        <button type="button" class="btn-cancel" style="flex:1;padding:8px" onclick="document.getElementById('admin-edit-avatar-file').click()">📁 Загрузить файл</button>
+        <button type="button" class="btn-cancel" style="flex:1;padding:8px" onclick="document.getElementById('admin-edit-avatar-file').click()"><i class="ic ic-folder"></i> Загрузить файл</button>
         <input type="file" id="admin-edit-avatar-file" accept="image/*" style="display:none" onchange="uploadAdminEditAvatar(this)">
       </div>
       <input type="text" id="admin-edit-avatar" class="mini-input" placeholder="или вставьте прямую ссылку https://..." oninput="previewAdminEditAvatar()">
@@ -1488,7 +1488,7 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
     </div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('admin-edit-user-modal')">Отмена</button>
-      <button class="btn-primary" onclick="saveAdminEditUser()">💾 Сохранить</button>
+      <button class="btn-primary" onclick="saveAdminEditUser()"><i class="ic ic-download"></i> Сохранить</button>
     </div>
   </div>
 </div>
@@ -1511,20 +1511,20 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 <div class="person-ctx-menu" id="person-ctx-menu">
   <div class="ctx-item" id="pctx-dm" onclick="personCtxOpenDM()"><span class="ctx-item-icon">💬</span> Написать</div>
   <div class="ctx-item" onclick="personCtxFriend()"><span class="ctx-item-icon">🤝</span> <span id="pctx-friend-label">Добавить в друзья</span></div>
-  <div class="ctx-item" id="pctx-pin" onclick="personCtxPinChat()"><span class="ctx-item-icon">📌</span> <span id="pctx-pin-label">Закрепить чат</span></div>
+  <div class="ctx-item" id="pctx-pin" onclick="personCtxPinChat()"><span class="ctx-item-icon"><i class="ic ic-pin"></i></span> <span id="pctx-pin-label">Закрепить чат</span></div>
   <div class="ctx-separator" id="pctx-sep-chat"></div>
-  <div class="ctx-item danger" id="pctx-delete" onclick="personCtxDeleteChat()"><span class="ctx-item-icon">🗑</span> Удалить чат</div>
+  <div class="ctx-item danger" id="pctx-delete" onclick="personCtxDeleteChat()"><span class="ctx-item-icon"><i class="ic ic-delete"></i></span> Удалить чат</div>
 </div>
 <div class="person-ctx-menu" id="chan-ctx-menu">
-  <div class="ctx-item" id="cctx-pin" onclick="chanCtxPin()"><span class="ctx-item-icon">📌</span> <span id="cctx-pin-label">Закрепить чат</span></div>
+  <div class="ctx-item" id="cctx-pin" onclick="chanCtxPin()"><span class="ctx-item-icon"><i class="ic ic-pin"></i></span> <span id="cctx-pin-label">Закрепить чат</span></div>
   <div class="ctx-separator"></div>
   <div class="ctx-item" id="cctx-leave" onclick="chanCtxLeave()"><span class="ctx-item-icon">🚪</span> <span id="cctx-leave-label">Выйти из канала</span></div>
-  <div class="ctx-item danger" id="cctx-delete" style="display:none" onclick="chanCtxDelete()"><span class="ctx-item-icon">🗑</span> Удалить навсегда</div>
+  <div class="ctx-item danger" id="cctx-delete" style="display:none" onclick="chanCtxDelete()"><span class="ctx-item-icon"><i class="ic ic-delete"></i></span> Удалить навсегда</div>
 </div>
 <div class="person-ctx-menu" id="ticket-ctx-menu">
   <div class="ctx-item" id="tctx-take" onclick="ticketCtxTake()"><span class="ctx-item-icon">✋</span> Взять жалобу</div>
   <div class="ctx-item" id="tctx-close" onclick="ticketCtxClose()"><span class="ctx-item-icon">✔</span> Закрыть жалобу</div>
-  <div class="ctx-item danger" id="tctx-delete" onclick="ticketCtxDelete()"><span class="ctx-item-icon">🗑</span> Удалить жалобу</div>
+  <div class="ctx-item danger" id="tctx-delete" onclick="ticketCtxDelete()"><span class="ctx-item-icon"><i class="ic ic-delete"></i></span> Удалить жалобу</div>
 </div>
 
 <!-- Context Menu -->
@@ -1591,8 +1591,8 @@ body.bubble-xl .msg-bubble-wrap{max-width:min(88%,480px)}
 
 <!-- Inline mini call bar (когда оверлей свёрнут) -->
 <div class="call-inline-bar" id="call-inline-bar">
-  <div class="cib-info"><span>📞</span><span id="cib-text">Звонок · 00:00</span></div>
-  <button class="cib-btn mute" id="cib-mute-btn" onclick="toggleMic()">🎙️</button>
+  <div class="cib-info"><span><i class="ic ic-call"></i></span><span id="cib-text">Звонок · 00:00</span></div>
+  <button class="cib-btn mute" id="cib-mute-btn" onclick="toggleMic()"><i class="ic ic-microphone"></i></button>
   <button class="cib-btn share" id="cib-share-btn" onclick="toggleScreenShare()">🖥️</button>
   <button class="cib-btn chat" id="cib-chat-btn" onclick="toggleCallChat()">💬</button>
   <button class="cib-btn" onclick="expandCall()">⤴️</button>

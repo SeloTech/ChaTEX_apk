@@ -72,3 +72,185 @@ input:focus,textarea:focus{outline:none;border-color:rgba(91,140,255,.55)}
 .chat-header-info{min-width:0;flex:1 1 auto;overflow:hidden}
 .chat-header-sub{display:block!important;white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis}
 .chat-header-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ============================================================
+   РЕДИЗАЙН v20: палитра и компоненты в духе Telegram (раскладка)
+   и Discord (тёмные цвета, скругления, состояния наведения)
+   ============================================================ */
+:root{
+  --bg:#0e1621;
+  --surface:#17212b;
+  --surface2:#1c2733;
+  --surface3:#213042;
+  --border:#243444;
+  --accent:#2ea6ff;
+  --accent2:#2ea6ff;
+  --text:#f2f5f8;
+  --text2:#8e9bab;
+  --text3:#5b6b7c;
+  --red:#ff5c6c;
+  --green:#4cc38a;
+  --gold:#f5b942;
+  --glass-bg:#17212b;
+  --glass-border:#243444;
+  --glass-shadow:0 4px 16px rgba(0,0,0,.25);
+  --glass-shine:none;
+}
+body{background:var(--bg)!important;color:var(--text);font-family:var(--font)}
+.sidebar{background:var(--surface)!important;border-right:1px solid var(--border)!important}
+.chat-header{background:var(--surface)!important;border-bottom:1px solid var(--border)!important;box-shadow:none!important}
+.chat-header-name{font-weight:700;font-size:16px}
+.chat-header-sub{color:var(--text2);font-size:13px}
+.chat-item{border-radius:10px;margin:2px 8px;padding:8px 10px;transition:background .15s}
+.chat-item:hover{background:var(--surface2)}
+.chat-item.active{background:var(--surface3)}
+.avatar{border-radius:50%}
+.msg-bubble{border-radius:16px;box-shadow:none}
+.msg-bubble.own,.msg-row.own .msg-bubble{background:#2b5278!important}
+.msg-row:not(.own) .msg-bubble{background:#182533!important}
+.input-area{background:var(--surface)!important;border-top:1px solid var(--border)!important}
+.modal{border-radius:16px!important;background:var(--surface2)!important;border:1px solid var(--border)}
+.btn-primary{background:var(--accent)!important;border-radius:10px!important;box-shadow:none!important}
+.btn-primary:hover{filter:brightness(1.08)}
+.stab{border-radius:8px}
+.stab.active{color:var(--accent)}
+.search-input{background:var(--surface2)!important;border:1px solid var(--border)!important;border-radius:10px!important}
+
+/* Иконки: окрашиваются в цвет текста, размер по месту использования */
+.tg-ic .ic{color:#fff;width:18px;height:18px}
+.h-btn .ic,.cib-btn .ic,.cib-info .ic{width:18px;height:18px}
+.search-icon .ic{width:16px;height:16px;color:var(--text2)}
+.avatar .ic{width:52%;height:52%;color:#fff}
+.ctx-item-icon .ic{width:16px;height:16px;color:currentColor}
+.pinned-icon .ic{width:12px;height:12px;color:var(--text2)}
+.premium-pill .ic{width:10px;height:10px;color:currentColor}
+h3 .ic,h4 .ic{width:16px;height:16px;vertical-align:-3px;margin-right:4px}
+.create-btn{border-radius:10px!important}
+
+/* Чистый мобильный экран: без браузерных полос прокрутки и рамок */
+html,body{overscroll-behavior:none}
+::-webkit-scrollbar{width:4px;height:4px}
+
+/* Иконки: белые PNG из набора, окрашиваются в currentColor через mask */
+.ic{display:inline-block;width:20px;height:20px;flex:0 0 auto;background:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat;vertical-align:middle}
+.ic-add_call{--ic:url(icons/ui/add_call.png)}
+.ic-add_contact{--ic:url(icons/ui/add_contact.png)}
+.ic-airplane{--ic:url(icons/ui/airplane.png)}
+.ic-antenna{--ic:url(icons/ui/antenna.png)}
+.ic-appearance{--ic:url(icons/ui/appearance.png)}
+.ic-archive{--ic:url(icons/ui/archive.png)}
+.ic-battery{--ic:url(icons/ui/battery.png)}
+.ic-bluetooth{--ic:url(icons/ui/bluetooth.png)}
+.ic-bookmark{--ic:url(icons/ui/bookmark.png)}
+.ic-boost{--ic:url(icons/ui/boost.png)}
+.ic-bot{--ic:url(icons/ui/bot.png)}
+.ic-broadcast{--ic:url(icons/ui/broadcast.png)}
+.ic-bug{--ic:url(icons/ui/bug.png)}
+.ic-calendar{--ic:url(icons/ui/calendar.png)}
+.ic-call{--ic:url(icons/ui/call.png)}
+.ic-camera{--ic:url(icons/ui/camera.png)}
+.ic-cast{--ic:url(icons/ui/cast.png)}
+.ic-celebration{--ic:url(icons/ui/celebration.png)}
+.ic-charging{--ic:url(icons/ui/charging.png)}
+.ic-chat{--ic:url(icons/ui/chat.png)}
+.ic-clock{--ic:url(icons/ui/clock.png)}
+.ic-cloud{--ic:url(icons/ui/cloud.png)}
+.ic-cloud_download{--ic:url(icons/ui/cloud_download.png)}
+.ic-cloud_upload{--ic:url(icons/ui/cloud_upload.png)}
+.ic-code{--ic:url(icons/ui/code.png)}
+.ic-contact_card{--ic:url(icons/ui/contact_card.png)}
+.ic-crown{--ic:url(icons/ui/crown.png)}
+.ic-dark{--ic:url(icons/ui/dark.png)}
+.ic-database{--ic:url(icons/ui/database.png)}
+.ic-delete{--ic:url(icons/ui/delete.png)}
+.ic-diamond{--ic:url(icons/ui/diamond.png)}
+.ic-dislike{--ic:url(icons/ui/dislike.png)}
+.ic-document{--ic:url(icons/ui/document.png)}
+.ic-download{--ic:url(icons/ui/download.png)}
+.ic-edit{--ic:url(icons/ui/edit.png)}
+.ic-error{--ic:url(icons/ui/error.png)}
+.ic-external{--ic:url(icons/ui/external.png)}
+.ic-face_id{--ic:url(icons/ui/face_id.png)}
+.ic-filter{--ic:url(icons/ui/filter.png)}
+.ic-fingerprint{--ic:url(icons/ui/fingerprint.png)}
+.ic-fire{--ic:url(icons/ui/fire.png)}
+.ic-flag{--ic:url(icons/ui/flag.png)}
+.ic-folder{--ic:url(icons/ui/folder.png)}
+.ic-gallery{--ic:url(icons/ui/gallery.png)}
+.ic-gamepad{--ic:url(icons/ui/gamepad.png)}
+.ic-gif{--ic:url(icons/ui/gif.png)}
+.ic-gift{--ic:url(icons/ui/gift.png)}
+.ic-grid{--ic:url(icons/ui/grid.png)}
+.ic-group{--ic:url(icons/ui/group.png)}
+.ic-hangup{--ic:url(icons/ui/hangup.png)}
+.ic-hashtag{--ic:url(icons/ui/hashtag.png)}
+.ic-heart{--ic:url(icons/ui/heart.png)}
+.ic-hidden{--ic:url(icons/ui/hidden.png)}
+.ic-inbox{--ic:url(icons/ui/inbox.png)}
+.ic-incognito{--ic:url(icons/ui/incognito.png)}
+.ic-info{--ic:url(icons/ui/info.png)}
+.ic-key{--ic:url(icons/ui/key.png)}
+.ic-language{--ic:url(icons/ui/language.png)}
+.ic-layers{--ic:url(icons/ui/layers.png)}
+.ic-light{--ic:url(icons/ui/light.png)}
+.ic-like{--ic:url(icons/ui/like.png)}
+.ic-link{--ic:url(icons/ui/link.png)}
+.ic-loading{--ic:url(icons/ui/loading.png)}
+.ic-location{--ic:url(icons/ui/location.png)}
+.ic-lock{--ic:url(icons/ui/lock.png)}
+.ic-low_battery{--ic:url(icons/ui/low_battery.png)}
+.ic-mail{--ic:url(icons/ui/mail.png)}
+.ic-mention{--ic:url(icons/ui/mention.png)}
+.ic-menu{--ic:url(icons/ui/menu.png)}
+.ic-message{--ic:url(icons/ui/message.png)}
+.ic-mic_off{--ic:url(icons/ui/mic_off.png)}
+.ic-microphone{--ic:url(icons/ui/microphone.png)}
+.ic-music{--ic:url(icons/ui/music.png)}
+.ic-mute{--ic:url(icons/ui/mute.png)}
+.ic-mute_notifications{--ic:url(icons/ui/mute_notifications.png)}
+.ic-new_chat{--ic:url(icons/ui/new_chat.png)}
+.ic-next{--ic:url(icons/ui/next.png)}
+.ic-no_signal{--ic:url(icons/ui/no_signal.png)}
+.ic-no_wifi{--ic:url(icons/ui/no_wifi.png)}
+.ic-notifications{--ic:url(icons/ui/notifications.png)}
+.ic-offline{--ic:url(icons/ui/offline.png)}
+.ic-package{--ic:url(icons/ui/package.png)}
+.ic-password{--ic:url(icons/ui/password.png)}
+.ic-pause{--ic:url(icons/ui/pause.png)}
+.ic-pin{--ic:url(icons/ui/pin.png)}
+.ic-play{--ic:url(icons/ui/play.png)}
+.ic-plugin{--ic:url(icons/ui/plugin.png)}
+.ic-preferences{--ic:url(icons/ui/preferences.png)}
+.ic-previous{--ic:url(icons/ui/previous.png)}
+.ic-profile{--ic:url(icons/ui/profile.png)}
+.ic-qr_code{--ic:url(icons/ui/qr_code.png)}
+.ic-reconnect{--ic:url(icons/ui/reconnect.png)}
+.ic-record{--ic:url(icons/ui/record.png)}
+.ic-screen_share{--ic:url(icons/ui/screen_share.png)}
+.ic-search{--ic:url(icons/ui/search.png)}
+.ic-security{--ic:url(icons/ui/security.png)}
+.ic-server{--ic:url(icons/ui/server.png)}
+.ic-settings{--ic:url(icons/ui/settings.png)}
+.ic-share{--ic:url(icons/ui/share.png)}
+.ic-signal{--ic:url(icons/ui/signal.png)}
+.ic-sort{--ic:url(icons/ui/sort.png)}
+.ic-stack{--ic:url(icons/ui/stack.png)}
+.ic-star{--ic:url(icons/ui/star.png)}
+.ic-stop{--ic:url(icons/ui/stop.png)}
+.ic-success{--ic:url(icons/ui/success.png)}
+.ic-sync{--ic:url(icons/ui/sync.png)}
+.ic-terminal{--ic:url(icons/ui/terminal.png)}
+.ic-translate{--ic:url(icons/ui/translate.png)}
+.ic-typing{--ic:url(icons/ui/typing.png)}
+.ic-unlock{--ic:url(icons/ui/unlock.png)}
+.ic-upload{--ic:url(icons/ui/upload.png)}
+.ic-verified{--ic:url(icons/ui/verified.png)}
+.ic-video{--ic:url(icons/ui/video.png)}
+.ic-video_call{--ic:url(icons/ui/video_call.png)}
+.ic-visible{--ic:url(icons/ui/visible.png)}
+.ic-volume{--ic:url(icons/ui/volume.png)}
+.ic-vpn{--ic:url(icons/ui/vpn.png)}
+.ic-waiting{--ic:url(icons/ui/waiting.png)}
+.ic-warning{--ic:url(icons/ui/warning.png)}
+.ic-wifi{--ic:url(icons/ui/wifi.png)}
+.ic-zip{--ic:url(icons/ui/zip.png)}

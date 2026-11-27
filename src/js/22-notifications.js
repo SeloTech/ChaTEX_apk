@@ -183,7 +183,7 @@ function listenAppVersion() {
   appVersionListenerRef = db.ref('system/appVersion');
   appVersionListenerCb = snap => {
     const latest = snap.val();
-    if (latest && latest !== APP_VERSION && localStorage.getItem('dismissedUpdateVersion') !== latest) showUpdateBanner(latest);
+    // Плашка обновления отключена: приложение обновляется через сайт и магазин, а не баннером
   };
   appVersionListenerRef.on('value', appVersionListenerCb);
 }
@@ -193,6 +193,7 @@ function unlistenAppVersion() {
 }
 
 function showUpdateBanner(latestVersion) {
+  return; // плашка отключена
   if (document.getElementById('app-update-banner')) return; // уже показан
   const b = document.createElement('div');
   b.id = 'app-update-banner';
