@@ -36,6 +36,14 @@
         ".write": "auth != null && (root.child('tickets').child($ticketId).child('creatorId').val() === auth.uid || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))"
       }
     },
+    "stories_feed": {
+      ".read": "auth != null",
+      ".indexOn": ["ts"],
+      "$sid": {
+        ".write": "auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid) || (data.exists() && data.child('uid').val() === auth.uid))",
+        ".validate": "newData.hasChildren(['uid', 'url', 'ts']) && newData.child('uid').val() === auth.uid && newData.child('url').isString() && newData.child('url').val().length < 2000 && newData.child('ts').isNumber()"
+      }
+    },
     "user_tickets": {
       "$uid": {
         ".read": "auth != null && auth.uid === $uid",

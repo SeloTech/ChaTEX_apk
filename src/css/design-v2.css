@@ -67,3 +67,8 @@ input:focus,textarea:focus{outline:none;border-color:rgba(91,140,255,.55)}
 .auth-btn{background:#5b8cff!important;box-shadow:none!important;border-radius:12px}
 .auth-btn:hover:not(:disabled){background:#4a7cf0!important}
 .logo-sub{font-family:var(--font);letter-spacing:0;font-size:13px;color:var(--text2)}
+
+/* Заголовок чата: подзаголовок «был(а) …» не переносится на вторую строку */
+.chat-header-info{min-width:0;flex:1 1 auto;overflow:hidden}
+.chat-header-sub{display:block!important;white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis}
+.chat-header-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
