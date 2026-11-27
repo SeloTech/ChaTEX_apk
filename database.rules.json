@@ -1,0 +1,226 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      ".indexOn": [
+        "username",
+        "email"
+      ],
+      "$uid": {
+        ".write": "auth != null && ((auth.uid === $uid && (!data.exists() || newData.exists() || now - data.child('createdAt').val() < 120000)) || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true || ((root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true) && data.child('isSuperAdmin').val() !== true))",
+        ".validate": "((newData.child('isAdmin').val() === data.child('isAdmin').val() && newData.child('isSuperAdmin').val() === data.child('isSuperAdmin').val() && newData.child('isRubick').val() === data.child('isRubick').val()) || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true) && ((newData.child('premium').val() === data.child('premium').val() && newData.child('premiumExpiresAt').val() === data.child('premiumExpiresAt').val() && newData.child('premiumFromPromo').val() === data.child('premiumFromPromo').val() && newData.child('verified').val() === data.child('verified').val() && newData.child('blocked').val() === data.child('blocked').val()) || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))",
+        "createdAt": {
+          ".validate": "!data.exists() || newData.val() === data.val()"
+        }
+      }
+    },
+    "favorites_messages": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "tickets": {
+      ".read": "auth != null",
+      ".indexOn": [
+        "status",
+        "creatorId"
+      ],
+      "$ticketId": {
+        ".write": "auth != null && ((!data.exists() && newData.child('creatorId').val() === auth.uid) || data.child('creatorId').val() === auth.uid || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))"
+      }
+    },
+    "ticket_messages": {
+      "$ticketId": {
+        ".read": "auth != null && (root.child('tickets').child($ticketId).child('creatorId').val() === auth.uid || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))",
+        ".write": "auth != null && (root.child('tickets').child($ticketId).child('creatorId').val() === auth.uid || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))"
+      }
+    },
+    "user_tickets": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && (auth.uid === $uid || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))"
+      }
+    },
+    "ticket_counter": {
+      ".read": true,
+      ".write": "auth != null",
+      ".validate": "newData.isNumber()"
+    },
+    "usernames": {
+      ".read": true,
+      "$nick": {
+        ".write": "auth != null && ((!data.exists() && newData.val() === auth.uid) || (data.val() === auth.uid && !newData.exists()) || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))"
+      }
+    },
+    "channels": {
+      ".read": "auth != null",
+      ".indexOn": [
+        "handle",
+        "ownerUid",
+        "name"
+      ],
+      "$chatId": {
+        ".write": "auth != null && ((!data.exists() && newData.child('ownerUid').val() === auth.uid && newData.child('verified').val() !== true && newData.child('blocked').val() !== true) || data.child('ownerUid').val() === auth.uid || data.child('admins').child(auth.uid).val() === true || data.child('memberPerms').child(auth.uid).child('manage').val() === true || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))",
+        "$field": {
+          ".write": "auth != null && !$field.matches(/^(ownerUid|ownerName|admins|memberPerms|verified|blocked|blockReason|handle)$/)"
+        }
+      }
+    },
+    "groups": {
+      ".read": "auth != null",
+      ".indexOn": [
+        "name",
+        "ownerUid"
+      ],
+      "$chatId": {
+        ".write": "auth != null && ((!data.exists() && newData.child('ownerUid').val() === auth.uid && newData.child('verified').val() !== true && newData.child('blocked').val() !== true) || data.child('ownerUid').val() === auth.uid || data.child('admins').child(auth.uid).val() === true || data.child('memberPerms').child(auth.uid).child('manage').val() === true || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))",
+        "$field": {
+          ".write": "auth != null && !$field.matches(/^(ownerUid|ownerName|admins|memberPerms|verified|blocked|blockReason|handle)$/)"
+        }
+      }
+    },
+    "channel_handles": {
+      ".read": true,
+      "$handle": {
+        ".write": "auth != null"
+      }
+    },
+    "user_chats": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        "$chatId": {
+          ".write": "auth != null && (auth.uid === $uid || $chatId.contains(auth.uid))"
+        }
+      }
+    },
+    "dms": {
+      "$chatId": {
+        ".read": "auth != null && $chatId.contains(auth.uid)",
+        ".write": "auth != null && $chatId.contains(auth.uid)"
+      }
+    },
+    "dm_meta": {
+      "$chatId": {
+        ".read": "auth != null && $chatId.contains(auth.uid)",
+        ".write": "auth != null && $chatId.contains(auth.uid)"
+      }
+    },
+    "official_messages": {
+      ".read": "auth != null",
+      ".indexOn": [
+        "timestamp"
+      ],
+      "$id": {
+        ".write": "(root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true)",
+        "reactions": {
+          ".write": "auth != null"
+        },
+        "read": {
+          ".write": "auth != null"
+        }
+      }
+    },
+    "support_messages": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": [
+        "timestamp"
+      ]
+    },
+    "complaints": {
+      ".read": "auth != null",
+      ".indexOn": [
+        "timestamp"
+      ],
+      "$id": {
+        ".write": "auth != null && (!data.exists() || (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true))"
+      }
+    },
+    "pinned": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "friend_requests": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null"
+      }
+    },
+    "friends": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null"
+      }
+    },
+    "notifications": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null",
+        ".indexOn": [
+          "read",
+          "timestamp"
+        ]
+      }
+    },
+    "user_chat_prefs": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "calls": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "callInvites": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null"
+      }
+    },
+    "typing_dm": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "typing_channel": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "typing_group": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "pending_verify": {
+      "$nick": {
+        ".read": true,
+        ".write": true,
+        ".validate": "newData.hasChildren(['code','ts'])"
+      }
+    },
+    "system": {
+      ".read": true,
+      "appVersion": {
+        ".write": "(root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true)"
+      }
+    },
+    "user_sessions": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "user_security": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "user_badges": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && (root.child('users').child(auth.uid).child('isAdmin').val() === true || root.child('users').child(auth.uid).child('isSuperAdmin').val() === true)"
+      }
+    }
+  }
+}

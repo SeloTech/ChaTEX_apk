@@ -1,0 +1,12 @@
+{
+  "appId": "com.chatex.app",
+  "appName": "ChaTEX",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "webContentsDebuggingEnabled": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "chatex-android",
+  "version": "18.7.0",
+  "private": true,
+  "scripts": {
+    "sync": "cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0"
+  }
+}
